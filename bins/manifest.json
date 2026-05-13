@@ -1,3 +1,40 @@
 {
-  "firmwares": []
+  "firmwares": [
+    {
+      "filename": "CCLoader_esp32_dev_dd-16_dc-17_reset-21_led-2.bin",
+      "url": "https://raw.githubusercontent.com/Samuel-0-0/CCLoader/bins/CCLoader_esp32_dev_dd-16_dc-17_reset-21_led-2.bin",
+      "board": "esp32_dev",
+      "chip": "ESP32",
+      "pins": {
+        "dd": "16",
+        "dc": "17",
+        "reset": "21",
+        "led": "2"
+      }
+    },
+    {
+      "filename": "CCLoader_esp32c6_dev_dd-23_dc-22_reset-19_led-0.bin",
+      "url": "https://raw.githubusercontent.com/Samuel-0-0/CCLoader/bins/CCLoader_esp32c6_dev_dd-23_dc-22_reset-19_led-0.bin",
+      "board": "esp32c6_dev",
+      "chip": "ESP32-C6",
+      "pins": {
+        "dd": "23",
+        "dc": "22",
+        "reset": "19",
+        "led": "0"
+      }
+    },
+    {
+      "filename": "CCLoader_esp32s3_dev_dd-15_dc-16_reset-17_led-18.bin",
+      "url": "https://raw.githubusercontent.com/Samuel-0-0/CCLoader/bins/CCLoader_esp32s3_dev_dd-15_dc-16_reset-17_led-18.bin",
+      "board": "esp32s3_dev",
+      "chip": "ESP32-S3",
+      "pins": {
+        "dd": "15",
+        "dc": "16",
+        "reset": "17",
+        "led": "18"
+      }
+    }
+  ]
 }
