@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-      - cc_loader
+      - main
     paths:
       - 'task.json'
       - 'Arduino/CCLoader/CCLoader.ino'
@@ -19,8 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: cc_loader
+      #  with:
+      #    ref: main
 
       - name: Install Arduino CLI
         uses: arduino/setup-arduino-cli@v2
@@ -89,6 +89,31 @@ jobs:
             
             # Determine FQBN, board name, and chip
             case "$BOARD" in
+             arduino_uno)
+                FQBN="arduino:avr:uno"
+                BOARD_NAME="arduino_uno"
+                CHIP="ATmega328P"
+                ;;
+              arduino_nano)
+                FQBN="arduino:avr:nano"
+                BOARD_NAME="arduino_nano"
+                CHIP="ATmega328P"
+                ;;
+              arduino_pro_mini)
+                FQBN="arduino:avr:pro"
+                BOARD_NAME="arduino_pro_mini"
+                CHIP="ATmega328P"
+                ;;
+              d1_mini)
+                FQBN="esp8266:esp8266:d1_mini"
+                BOARD_NAME="d1_mini"
+                CHIP="ESP8266"
+                ;;
+              nodemcu)
+                FQBN="esp8266:esp8266:nodemcuv2"
+                BOARD_NAME="nodemcu"
+                CHIP="ESP8266"
+                ;;
               esp8266_generic)
                 FQBN="esp8266:esp8266:generic"
                 BOARD_NAME="esp8266_generic"
@@ -98,6 +123,11 @@ jobs:
                 FQBN="esp32:esp32:esp32"
                 BOARD_NAME="esp32_dev"
                 CHIP="ESP32"
+                ;;
+              esp32c3_dev)
+                FQBN="esp32:esp32:esp32c3"
+                BOARD_NAME="esp32c3_dev"
+                CHIP="ESP32-C3"
                 ;;
               esp32s3_dev)
                 FQBN="esp32:esp32:esp32s3"
@@ -160,6 +190,7 @@ jobs:
               
               case "$BOARD" in
                 esp32_dev) ESPTOOL_CHIP="esp32" ;;
+                esp32c3_dev) ESPTOOL_CHIP="esp32c3" ;;
                 esp32s3_dev) ESPTOOL_CHIP="esp32s3" ;;
                 esp32c6_dev) ESPTOOL_CHIP="esp32c6" ;;
               esac
@@ -237,13 +268,33 @@ jobs:
             
             # Determine the file name and chip
             case "$BOARD" in
-              esp8266_generic)
-                BOARD_NAME="esp8266_generic"
+              arduino_uno)
+                BOARD_NAME="arduino_uno"
+                CHIP="ATmega328P"
+                ;;
+              arduino_nano)
+                BOARD_NAME="arduino_nano"
+                CHIP="ATmega328P"
+                ;;
+              arduino_pro_mini)
+                BOARD_NAME="arduino_pro_mini"
+                CHIP="ATmega328P"
+                ;;
+              d1_mini)
+                BOARD_NAME="d1_mini"
+                CHIP="ESP8266"
+                ;;
+              nodemcu)
+                BOARD_NAME="nodemcu"
                 CHIP="ESP8266"
                 ;;
               esp32_dev)
                 BOARD_NAME="esp32_dev"
                 CHIP="ESP32"
+                ;;
+              esp32c3_dev)
+                BOARD_NAME="esp32c3_dev"
+                CHIP="ESP32-C3"
                 ;;
               esp32s3_dev)
                 BOARD_NAME="esp32s3_dev"
